@@ -12,7 +12,7 @@ list_to_html(List) when is_list(List) ->
   end;
 list_to_html(List) when is_tuple(List) -> list_to_html(tuple_to_list(List));
 list_to_html(List) when is_atom(List) -> list2binary_ex([?Header,atom_to_list(List),?Footer]);
-list_to_html(_List) -> list2binary_ex([?Header, "error!!!",?Footer]);
+list_to_html(_List) -> list2binary_ex([?Header, "error!!!",?Footer]).
 %*****************************************************************************************************************************************************************************************	
 -spec list_to_html_table(maybe_improper_list()) -> binary().
 list_to_html_table(List) ->
