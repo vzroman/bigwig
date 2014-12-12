@@ -4,7 +4,6 @@
 -define(Header, lists:append(["<html><head><title></title></head><body bgcolor=",get_random_color(),">"])).
 -define(Footer, "</body></html>").
 %====================================================================================================================================================================================
--spec list_to_html(_) -> binary() | [#exchange_rec{good_id::0,new_good_id::0,brand_id::0,new_brand_id::0,undef_int::0,good_name::<<>>,new_good_name::<<>>,brand_name::<<>>,new_brand_name::<<>>,error::binary(),undef_bin::<<>>},...].
 list_to_html(List) when is_pid(List) -> list2binary_ex([?Header, pid_to_list(List),?Footer]);
 list_to_html(List) when is_list(List) ->
   case is_simple_list(List) of
