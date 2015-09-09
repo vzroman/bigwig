@@ -3,5 +3,15 @@ ebin/*.app
 deps/
 *.swp
 log/
+*.o
+*.beam
+*.plt
+*.swp
+*.swo
+*.*~
 *~
+*~
+*.*~
+*.
+.erlang.cookie
 erl_crash.dump
