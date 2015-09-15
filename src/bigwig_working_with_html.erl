@@ -1,5 +1,7 @@
 -module(bigwig_working_with_html).
--compile(export_all).
+%-compile(export_all).
+
+-export([list_to_html/1, list_to_html_table/1]).
 %====================================================================================================================================================================================
 -define(Header, lists:append(["<html><head><title></title></head><body bgcolor=",get_random_color(),">"])).
 -define(Footer, "</body></html>").

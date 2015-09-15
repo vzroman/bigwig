@@ -285,6 +285,12 @@ get_mem(Tag, MemI) ->
     _ -> 0
   end.
 
+get_kernel_poll() ->
+  get_kernel_poll(erlang:system_info(kernel_poll)).
+
+get_kernel_poll(false) -> 0;
+get_kernel_poll(true) -> 1. 
+
 update_json(Info, #opts{node=Node, accum=Accum}) ->
     {Cpu, NProcs, RQ, Clock0} = loadinfo(Info),
     Clock = iolist_to_binary(Clock0),
@@ -299,12 +305,6 @@ update_json(Info, #opts{node=Node, accum=Accum}) ->
             Memi ->
                 [Tot,Procs,Atom,Bin,Code,Ets] =
                     etop2:meminfo(Memi, [total,processes,atom,binary,code,ets]),
-                case erlang:system_info(kernel_poll) of
-                  false ->
-                      Poll = 0;
-                  true ->
-                      Poll = 1
-                end,
 
                 [{<<"node">>, atom_to_binary(Node, utf8)},
                  {<<"clock">>, Clock},
@@ -318,7 +318,7 @@ update_json(Info, #opts{node=Node, accum=Accum}) ->
                  {<<"atom">>, Atom},
                  {<<"ets">>, Ets},
                  {<<"limit">>, erlang:system_info(process_limit)},
-                 {<<"poll">>, Poll},%erlang:system_info(kernel_poll)},
+                 {<<"poll">>, get_kernel_poll()},
                  {<<"processors">>,erlang:system_info(logical_processors)},
                  {<<"release">>,erlang:system_info(otp_release)},
                  {<<"architecture">>,erlang:system_info(system_architecture)}

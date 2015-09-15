@@ -22,8 +22,20 @@
 	"        procs~8w                        processes~8w    code     ~8w~n"
 	"        runq ~8w                        atom     ~8w    ets      ~8w~n").
 
--record(opts, {node=node(), port = 8415, accum = false, intv = 5000, lines = 10,
-	       width = 700, height = 340, sort = runtime, tracing = on,
+-record(opts, {node=node(), port = 8415 :: port() | undefined,
+               accum = false :: boolean(),
+               intv = 5000 :: pos_integer(), 
+               lines = 10 ::pos_integer(),
+	       width = 700 ::pos_integer(), 
+               height = 340 ::pos_integer(), 
+               sort = runtime ::atom(), 
+               tracing = on ::boolean(),
 	       %% Other state information
-	       out_mod=etop_gui, out_proc, server, host, tracer, store, 
-	       accum_tab, remote}).
+	       out_mod=etop_gui ::atom(), 
+               out_proc, 
+               server, 
+               host, 
+               tracer, 
+               store, 
+	       accum_tab, 
+               remote}).
