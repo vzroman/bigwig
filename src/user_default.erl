@@ -1,6 +1,12 @@
 -module(user_default).
--compile(export_all).
 -import(io, [format/1]). 
+-export([help/0, super_restart/2,
+    dbgtc/1, dbgon/1, 
+    dbgon/2,
+    dbgadd/1, dbgadd/2,
+    dbgdel/1, dbgdel/2, 
+    dbgoff/0, dbghelp/0,
+    lm/0, mm/0]).
 
 super_restart(Sup,Mod) ->
     io:format("Terminating ~p:~p~n", [Sup,Mod]),
@@ -134,5 +140,5 @@ find_module_file(Path) ->
     end.
 
 
-time(F) when is_function(F) ->
-    S = now(), Res = F(), E = now(), {timer:now_diff(E,S), Res}.
+%time(F) when is_function(F) ->
+%    S = now(), Res = F(), E = now(), {timer:now_diff(E,S), Res}.
