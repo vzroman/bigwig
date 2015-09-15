@@ -1,8 +1,6 @@
 -module(bigwig_http_etsinfo).
 -behaviour(cowboy_http_handler).
--export([init/3, handle/2, terminate/2]).
-
--compile(export_all).
+-export([init/3, handle/2, terminate/3]).
 
 init({tcp, http}, Req, _Opts) ->
     {ok, Req, undefined_state}.
@@ -13,8 +11,7 @@ handle(Req, State) ->
     {ok, Req2} = cowboy_http_req:reply(200, Headers, Body, Req),
     {ok, Req2, State}.
 
-terminate(_Req, _State) ->
+terminate(_Reason, _Req, _State) ->
     ok.
-
 
 etsinfo() -> [{Tab,ets:info(Tab)}||Tab<-ets:all()].
