@@ -6,7 +6,7 @@
 -behaviour(cowboy_http_handler).
 -export([init/3, handle/2, terminate/3]).
 
--compile(export_all).
+-export([all/0, system_info/0, releases/0, applications/0]).
 
 init({tcp, http}, Req, _Opts) ->
     {ok, Req, undefined_state}.
