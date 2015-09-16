@@ -52,13 +52,13 @@ system_info() ->
 releases() ->
     Rels = release_handler:which_releases(),
     %% TODO parse out the name/version of the apps?
-    %FmtDeps = fun(L) -> [ list_to_binary(A) || A <- L ] end,
+    FmtDeps = fun(L) -> [ list_to_binary(A) || A <- L ] end,
     [
         {list_to_binary(Name),
          [
-          {version, list_to_binary(Version)}% ,
-          % {status,  list_to_binary(atom_to_list(Status))}% ,
-          % {deps,    FmtDeps(Deps)}
+          {version, list_to_binary(Version)}
+          ,{deps,    FmtDeps(Deps)}
+          ,{status,  list_to_binary(atom_to_list(Status))}
          ]}
         || {Name, Version, Deps, Status} <- Rels
     ].

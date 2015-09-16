@@ -16,7 +16,10 @@
           ttref :: reference()
          }).
 
--record(db, {q, p, links, links2}).
+-record(db, {q ::pid() , 
+             p :: reference(),
+             links :: reference(),
+             links2 :: reference()}).
 
 -define(IGNORE_APPS, [application_controller, init, error_logger, gs,
                       node_serv, appmon, appmon_a, appmon_info]).

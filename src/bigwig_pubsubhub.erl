@@ -20,7 +20,7 @@
          terminate/2, 
          code_change/3]).
 
--record(state, {listeners=[]}).
+-record(state, { listeners=[] :: list() }).
 
 %% ------------------------------------------------------------------
 %% API Function Definitions

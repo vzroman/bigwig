@@ -17,18 +17,18 @@
 %%
 
 -record(etop_info, {
-          now = {0, 0, 0},
-          n_procs = 0,
-          wall_clock = {0, 0},
-          runtime = {0, 0},
-          run_queue = 0,
-          alloc_areas = [],
+          now = {0, 0, 0} :: {pos_integer(), pos_integer(), pos_integer()},
+          n_procs = 0 :: non_neg_integer(),
+          wall_clock = {0, 0} :: {pos_integer(),pos_integer()},
+          runtime = {0, 0} :: {pos_integer(),pos_integer()},
+          run_queue = 0 :: non_neg_integer(),
+          alloc_areas = [] :: list(),
           memi = [{total, 0},
                   {processes, 0}, 
                   {ets, 0},
                   {atom, 0},
                   {code, 0},
-                  {binary, 0}],
+                  {binary, 0}] :: [{atom(), non_neg_integer()}],
           procinfo = [] :: list()
          }).
 
@@ -36,7 +36,8 @@
           pid :: pid(),
           mem=0 :: non_neg_integer(),
           reds=0 :: non_neg_integer(),
-          name,
+          name :: binary(),
           runtime=0 :: non_neg_integer(),
-          cf,
-          mq=0}).
+          cf :: atom() ,
+          mq=0 :: non_neg_integer()
+}).
