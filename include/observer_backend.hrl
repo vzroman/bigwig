@@ -29,14 +29,14 @@
                   {atom, 0},
                   {code, 0},
                   {binary, 0}],
-          procinfo = []
+          procinfo = [] :: list()
          }).
 
 -record(etop_proc_info, {
-          pid,
-          mem=0,
-          reds=0,
+          pid :: pid(),
+          mem=0 :: non_neg_integer(),
+          reds=0 :: non_neg_integer(),
           name,
-          runtime=0,
+          runtime=0 :: non_neg_integer(),
           cf,
           mq=0}).

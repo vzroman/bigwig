@@ -7,7 +7,7 @@
 -export([init/1, handle_cast/2, handle_info/2, terminate/2]).
 -export([handle_call/3, code_change/3]).
 
--compile(export_all).
+% -compile(export_all).
 
 -record(state, {
           client :: pid(),
