@@ -1,5 +1,8 @@
 #!/bin/sh
 cd `dirname $0`
-make
+export BIGWIG=$PWD/_build/default/lib
+echo $BIGWIG/*/ebin
+
+make clean && make
 mkdir -p log/sasl
-erl -name bigwig@localhost -pa $PWD/ebin $PWD/deps/*/ebin -boot start_sasl -config sys.config -s reloader -s bigwig
+erl -sname bigwig -pa $BIGWIG/*/ebin -boot start_sasl -config sys.config -s reloader -s bigwig
