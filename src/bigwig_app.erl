@@ -28,7 +28,6 @@ start(_StartType, _StartArgs) ->
                {"/stats-stream",    bigwig_http_stats_stream, []},
                {"/lager/stream",    bigwig_http_lager_stream, []},
                {"/lager/[...]",        bigwig_http_lager, []},
-               {"/md/stream",    bigwig_http_md_stream, []},
                {'_',                bigwig_http_catchall, []}
               ]}
     ]),
