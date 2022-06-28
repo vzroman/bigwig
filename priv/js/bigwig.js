@@ -54,27 +54,6 @@ $(function() {
               }
             })  
     });
-    $('#del_trace').bind('click', function(event) {
-      var trace=$('#tracer').val();
-      var x = trace.split(":");
-      var tracer = '';
-      for(var i=0; i< x.length; ++i)
-      {
-        tracer = tracer + x[i] + ',';
-      }
-      tracer = tracer.substring(0,tracer.length-1);
-
-      var url = '/lager/tracer/'+tracer;
-
-      $.ajax({
-              url:url,
-              type:'DELETE',
-              success: function(resp){
-                  alert('Stop tracer success');
-                  uStatus();
-              }
-            })  
-    });
     $('#clear_all_traces').bind('click', function(event) {
       var url = '/lager/tracer/all';
       $.ajax({
